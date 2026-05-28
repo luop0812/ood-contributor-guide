@@ -4,6 +4,7 @@ We introduce two simple ways to set up your OOD development environment: set up 
 ### Set up a sandbox for app development
 If you have an Open OnDemand instance running, the easiest way to set up your development environment is to open a sandbox. 
 
+[!WARNING]
 **Note:** Before you can use the OOD sandbox development environment, it must be enabled by the OOD administrator. This mode allows you to create and test custom web applications directly from your home directory in an isolated space. Contact your OOD adminstrator if your don't see 'My Sandbox Apps (Development)' in step 3. 
 
 1. Enable Development Mode: If you don't see the "Develop" menu in your dashboard, you typically need to create a specific directory in your terminal to signal the system:
