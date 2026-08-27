@@ -59,7 +59,7 @@ as follows:
 ### Example 2
 
 
-[!TIP] 
-The filename can affect load order because the files are evaluated alphabetically. 
-Use numeric prefixes such as 10_..., 20_... if order matters.
+> [!TIP] 
+> The filename can affect load order because the files are evaluated alphabetically. 
+> Use numeric prefixes such as 10_..., 20_... if order matters.
 
