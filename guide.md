@@ -26,14 +26,12 @@ mkdir -p ~/ondemand/dev
 ## Initializers
 
 Open OnDemand Dashboard initializers are Ruby files located in `/etc/ood/config/apps/dashboard/initializers`. 
-They are loaded when the Dashboard starts and provide a convenient way for administrators to customize or 
+They are loaded when the Dashboard starts and provide a convenient way to customize or 
 extend Dashboard behavior without modifying the Open OnDemand source code. Initializers can be used to change 
 application settings, add site-specific logic, or customize how Dashboard features are initialized.
 
-We will see two examples that demonstrate how to use initializers to customize the dashboard.
-
-### Add user specified paths to pull-down menue Files 
-As the OOD Admin, create a file `/etc/ood/config/apps/dashboard/initializers/user_paths.rb` and add the following code:
+### Add user specified paths to Files 
+As the OOD Administrator, create a file `/etc/ood/config/apps/dashboard/initializers/user_paths.rb` with the following code:
 
 ```{ruby}
 Rails.application.config.after_initialize do
@@ -51,8 +49,8 @@ Rails.application.config.after_initialize do
 end
 ```
 
-Once the file is in place, users can add any paths they would like to list under `Files` by following 
-two steps. 
+Once the file is in place, users can add any paths they would like to list under `Files` 
+as follows:
 1. Add the paths to `$HOME/ondemand/favorite_path.txt`, one path per line.
 2. Restart their PUN by clicking `Develop`->`Restart Web Server`. 
 
