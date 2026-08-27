@@ -30,6 +30,8 @@ They are loaded when the Dashboard starts and provide a convenient way to custom
 extend Dashboard behavior without modifying the Open OnDemand source code. Initializers can be used to change 
 application settings, add site-specific logic, or customize how Dashboard features are initialized.
 
+Let's see a few examples below.
+
 ### Add user specified paths to Files 
 As the OOD Administrator, create a file `/etc/ood/config/apps/dashboard/initializers/user_paths.rb` with the following code:
 
@@ -53,4 +55,11 @@ Once the file is in place, users can add any paths they would like to list under
 as follows:
 1. Add the paths to `$HOME/ondemand/favorite_path.txt`, one path per line.
 2. Restart their PUN by clicking `Develop`->`Restart Web Server`. 
+
+### Example 2
+
+
+[!TIP] 
+The filename can affect load order because the files are evaluated alphabetically. 
+Use numeric prefixes such as 10_..., 20_... if order matters.
 
