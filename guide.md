@@ -30,6 +30,10 @@ They are loaded when the Dashboard starts and provide a convenient way to custom
 extend Dashboard behavior without modifying the Open OnDemand source code. Initializers can be used to change 
 application settings, add site-specific logic, or customize how Dashboard features are initialized.
 
+Why use an initializer instead of embedding code in each app form?
+* App-form approach: If you embed user attribute-capturing code directly into each individual app form, that code executes in each app every time the user visits any app or refreshes any OOD page. This creates redundant processing across your applications.
+* Initializer approach: With an initializer, the attribute-capturing code runs only once, at the moment the user logs into Open OnDemand. The initializer will re-execute if a user returns to any Open OnDemand page after 5 minutes of inactivity, as their PUN (Privileged User Namespace) session expires at that point.
+
 Let's see a few examples below.
 
 ### Add user specified paths to Files 
@@ -56,7 +60,51 @@ as follows:
 1. Add the paths to `$HOME/ondemand/favorite_path.txt`, one path per line.
 2. Restart their PUN by clicking `Develop`->`Restart Web Server`. 
 
-### Example 2
+### Display user projects in form.yml.erb
+1. Add an initializer that captures the output of a command that lists a user's projects, one project per line.
+
+```{ruby}
+# /etc/ood/config/apps/dashboard/initializers/user_attributes.rb
+require 'open3'
+
+module OodSupport
+  class User
+    def myprojects
+      @myprojects ||= begin
+        # the custom myproject command below returns a list of a user's projects, one per line
+        cmd = "/sw/local/bin/myproject"
+        o, e, s = Open3.capture3(cmd)
+        o.chomp.split
+      end
+    end
+  end
+end
+```
+2. Display user accounts in a form.yml.erb app file
+```
+#/var/www/ood/apps/sys/jupyter/form.yml.erb
+projects:
+    widget: 'select'
+    options:
+        <%  OodSupport::User.new.myprojects.each do |line| %>
+        - "<%= line %>"
+        <%- end %>
+```   
+### Predefined initializers
+There are several automatic predefined [attributes](https://osc.github.io/ood-documentation/latest/how-tos/app-development/interactive/form.html#automatic-predefined-attributes) that dynamically populate form fields with system values such as clusters, queues, accounts, and software modules. Simply add the attribute name to the form: list in your form.yml.erb file.
+```{ruby}
+form:
+  - auto_accounts
+  - auto_queues
+  - auto_qos
+  - auto_batch_clusters
+  - auto_cores
+  - auto_groups
+  - auto_primary_group
+  - auto_modules_<modulename>
+```
+
+
 
 
 > [!TIP] 
