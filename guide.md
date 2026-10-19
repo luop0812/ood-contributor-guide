@@ -135,9 +135,9 @@ form:
 
 ### Add initializers in global form items
 Due to the order in which files are read, a subclass file will need to be created in order to use initializers in global form items.
-1. add the initializer in a subclass file (root owned) but not in the ondemand.d directory
+1. add the initializer in a subclass file (root owned).
 ```{ruby}
-# /etc/ood/config/init4globals.rb
+# /etc/ood/config/apps/dashboard/initializers/init4globals.rb
 
 require 'ood_support'
 
@@ -156,7 +156,7 @@ end
 ```{ruby}
 # /etc/ood/config/ondemand.d/global_bc_items.yml.erb
 
-<% require '/etc/ood/config/init4globals.rb' %>
+<% require '/etc/ood/config/apps/dashboard/initializers/init4globals.rb' %>
 
 global_bc_form_items:
   global_project:
