@@ -83,17 +83,21 @@ module OodSupport
 end
 ```
 
-2. Display user accounts in a form.yml.erb app file
+2. Display user projects in a form.yml.erb app file
 ```
 # /var/www/ood/apps/sys/jupyter/form.yml.erb
 
-projects:
+attributes
+  projects:
     widget: 'select'
     label: 'Project'
     options:
         <%  OodSupport::User.new.myprojects.each do |line| %>
         - "<%= line %>"
         <%- end %>
+
+form:
+  - projects
 ```   
 ### Predefined initializers
 There are several automatic predefined [attributes](https://osc.github.io/ood-documentation/latest/how-tos/app-development/interactive/form.html#automatic-predefined-attributes) that dynamically populate form fields with system values such as clusters, queues, accounts, and software modules. Simply add the attribute name to the form: list in your form.yml.erb file.
