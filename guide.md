@@ -88,7 +88,7 @@ end
 # /var/www/ood/apps/sys/jupyter/form.yml.erb
 
 attributes
-  projects:
+  project:
     widget: 'select'
     label: 'Project'
     options:
@@ -97,7 +97,7 @@ attributes
         <%- end %>
 
 form:
-  - projects
+  - project
 ```   
 ### Predefined initializers
 There are several automatic predefined [attributes](https://osc.github.io/ood-documentation/latest/how-tos/app-development/interactive/form.html#automatic-predefined-attributes) that dynamically populate form fields with system values such as clusters, queues, accounts, and software modules. Simply add the attribute name to the form: list in your form.yml.erb file.
@@ -116,7 +116,7 @@ form:
 ```
 
 ## Global form items
-Global batch connect form items can be used (v4.0+) to display a common field in all batch connect applications.
+Global batch connect form items (v4.0) can be defined once in an `ondemand.d` file and used to display a common field in all batch connect applications.
 
 ### Define global form item
 As an example, lets add a field that allows the user to input a specific compute node name adding a pattern validation to match node names and disabling caching.
@@ -139,7 +139,7 @@ form:
 ```
 
 ### Add initializers in global form items
-Due to the order in which files are read, a subclass file will need to be created in order to use initializers in global form items.
+We can make the `project` attribute we defined previously a global form item to simply its use. Due to the order in which files are read, a subclass file will need to be created in order to use initializers in global form items.
 1. add the initializer in a subclass file (root owned).
 ```{ruby}
 # /etc/ood/config/apps/dashboard/initializers/init4globals.rb
