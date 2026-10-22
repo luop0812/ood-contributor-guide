@@ -87,7 +87,7 @@ end
 ```
 # /var/www/ood/apps/sys/jupyter/form.yml.erb
 
-attributes
+attributes:
   project:
     widget: 'select'
     label: 'Project'
