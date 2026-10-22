@@ -22,6 +22,7 @@ mkdir -p ~/ondemand/dev
 
 ### Set up an OOD Docker container for app development
 
+Follow the instructions in this [link](https://github.com/OSC/ood-demo) to set up a docker container for app development. 
 
 ## Initializers
 
