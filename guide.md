@@ -139,7 +139,7 @@ form:
 ```
 
 ### Add initializers in global form items
-We can make the `project` attribute we defined previously a global form item to simply its use. Due to the order in which files are read, a subclass file will need to be created in order to use initializers in global form items.
+We can make the `project` attribute we defined previously a global form item to simplify its use. Due to the order in which files are read, a subclass file will need to be created in order to use initializers in global form items.
 1. add the initializer in a subclass file (root owned).
 ```{ruby}
 # /etc/ood/config/apps/dashboard/initializers/init4globals.rb
