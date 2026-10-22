@@ -22,7 +22,7 @@ mkdir -p ~/ondemand/dev
 
 ### Set up an OOD Docker container for app development
 
-Follow the instructions in this [link](https://github.com/OSC/ood-demo) to set up a docker container for app development. 
+Alternatively, you can set up a Docker container for app development. Follow the instructions in this [link](https://github.com/OSC/ood-demo) to set up your OOD docker container. 
 
 ## Initializers
 
@@ -31,7 +31,7 @@ They are loaded when the Dashboard starts and provide a convenient way to custom
 extend Dashboard behavior without modifying the Open OnDemand source code. Initializers can be used to change 
 application settings, add site-specific logic, or customize how Dashboard features are initialized.
 
-Why use an initializer instead of embedding code in each app form?
+Initializers can also be used by app forms to replace embedded attribute-capturing code. So, why use an initializer instead of embedding code in each app form?
 * App-form approach: If you embed user attribute-capturing code directly into each individual app form, that code executes in each app every time the user visits any app or refreshes any OOD page. This creates redundant processing across your applications.
 * Initializer approach: With an initializer, the attribute-capturing code runs only once, at the moment the user logs into Open OnDemand. The initializer will re-execute if a user returns to any Open OnDemand page after 5 minutes of inactivity, as their PUN (Privileged User Namespace) session expires at that point.
 
