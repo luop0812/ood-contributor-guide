@@ -1,0 +1,10 @@
+---
+name: Jmol
+category: Interactive Apps
+subcategory: Imaging
+role: batch_connect
+description: |
+  This app will launch a [Jmol](https://jmol.sourceforge.net/) GUI
+
+  [Jmol] (https://jmol.sourceforge.net/) Jmol is an open-source viewer for three-dimensional chemical structures, with features for chemicals, crystals, materials and biomolecules.
+

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# enable xfce windows manager
+export SEND_256_COLORS_TO_REMOTE=1
+export XDG_CACHE_HOME="$(mktemp -d)"
+export $(dbus-launch)
+module restore
+set -x
+xfwm4 --sm-client-disable &
+xsetroot -solid "#D3D3D3"
+xfsettingsd --daemon --sm-client-disable
+xfce4-panel --sm-client-disable &
+xfdesktop &
+
+# launch Jmol GUI
+module purge
+module load Jmol/16.5.7-Java-21
+jmol.sh

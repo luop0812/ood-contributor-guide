@@ -1,0 +1,9 @@
+---
+batch_connect:
+  template: vnc
+
+script:
+  native:
+    # the bc_num_hours is a predefined form attribute that automatically sets --time
+    - "--ntasks-per-node=<%= num_cores.to_i %>"
+    - "--mem=<%= memory.to_i %>G"

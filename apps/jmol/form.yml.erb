@@ -1,0 +1,22 @@
+---
+title: "Jmol"
+cluster: "launch"
+# bc_num_hours is a predefined form attribute with no max value
+form:
+  - bc_num_hours
+  - num_cores
+  - memory
+attributes:
+  num_cores:
+    widget: 'number_field'
+    label: "Number of cores (max 64)"
+    value: 1
+    min: 1
+    max: 64
+  memory:
+    widget: "number_field"
+    label: "Memory (GB) (max 250)"
+    value: 1
+    min: 1
+    max: 250
+
